@@ -4,41 +4,50 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+
     <group
         android:translateX="22"
         android:translateY="22">
+
         <!-- Train body -->
         <path
             android:fillColor="#2D6A4F"
             android:pathData="M8,0 L56,0 L64,12 L64,44 C64,46.2 62.2,48 60,48 L4,48 C1.8,48 0,46.2 0,44 L0,12 Z" />
+
         <!-- Train window -->
         <path
             android:fillColor="#FFFFFF"
             android:pathData="M12,8 L52,8 L58,16 L58,40 L6,40 L6,16 Z" />
-        <!-- Train front -->
+
+        <!-- Train front (nose) -->
         <path
             android:fillColor="#1B4332"
             android:pathData="M56,0 L64,12 L56,12 Z" />
+
         <!-- Headlight -->
-        <circle
+        <path
             android:fillColor="#FFD700"
-            android:cx="56"
-            android:cy="12"
-            android:r="3" />
-        <!-- Rail -->
+            android:pathData="M54,9 A3,3 0 1 1 54,15 A3,3 0 1 1 54,9 Z" />
+
+        <!-- Rail line -->
         <path
             android:fillColor="#4A5568"
             android:pathData="M2,48 L62,48 L62,52 L58,52 L58,50 L6,50 L6,52 L2,52 Z" />
-        <!-- Wheels -->
-        <circle
+
+        <!-- Left wheel (circle as path using arcs) -->
+        <path
             android:fillColor="#2D3748"
-            android:cx="14"
-            android:cy="48"
-            android:r="4" />
-        <circle
+            android:pathData="M14,48 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+
+        <!-- Right wheel (circle as path using arcs) -->
+        <path
             android:fillColor="#2D3748"
-            android:cx="50"
-            android:cy="48"
-            android:r="4" />
+            android:pathData="M50,48 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+
+        <!-- Window divider -->
+        <path
+            android:fillColor="#2D6A4F"
+            android:pathData="M32,8 L32,40 L36,40 L36,8 Z" />
+
     </group>
 </vector>
