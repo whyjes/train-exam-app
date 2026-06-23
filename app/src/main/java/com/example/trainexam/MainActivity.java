@@ -2,7 +2,9 @@ package com.example.trainexam;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,33 +20,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide(); // Hide title bar for full-screen
-
         webView = new WebView(this);
         setContentView(webView);
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);   // Required for localStorage
-        settings.setDatabaseEnabled(true);
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
 
-        // Enable localStorage database path
-        String dbPath = this.getApplicationContext().getDir("database", MODE_PRIVATE).getPath();
-        settings.setDatabasePath(dbPath);
-
         // Prevent overscroll and edge glow
-        webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
+        webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
         // Handle page navigation inside WebView
         webView.setWebViewClient(new WebViewClient() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                view.loadUrl(request.getUrl().toString());
                 return true;
             }
         });
